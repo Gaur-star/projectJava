@@ -29,19 +29,19 @@ public class main{
   //     }
   // }
 
-  public static void mymethod(){
-      int rows = 5;
-      for(int i = 1; i < rows; i++){
-        for(int j = 1; j <= i; j++){
-          System.out.print("*");
-        }
-        System.out.println();
-      }
-  }
+  // public static void mymethod(){
+  //     int rows = 5;
+  //     for(int i = 1; i < rows; i++){
+  //       for(int j = 1; j <= i; j++){
+  //         System.out.print("*");
+  //       }
+  //       System.out.println();
+  //     }
+  // }
 
-  public static void main(String[] args){
-      mymethod();
-  }
+  // public static void main(String[] args){
+  //     mymethod();
+  // }
 
 
 //     public static void main(String[] args) {
@@ -53,6 +53,16 @@ public class main{
 //             System.out.println(); // Moves to the next line
 //         }
 //     }
+static String myMethod(String fname, int age){
+   return "the name of person is " + fname + " " + "and age of this person is " + age;
+}
+
+public static void main(String[] args){
+  System.out.println(myMethod("sam", 5));
+   System.out.println(myMethod("rakesh", 51));
+
+
+}
 
 
 

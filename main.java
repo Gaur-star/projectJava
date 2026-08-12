@@ -53,13 +53,23 @@ public class main{
 //             System.out.println(); // Moves to the next line
 //         }
 //     }
-static String myMethod(String fname, int age){
-   return "the name of person is " + fname + " " + "and age of this person is " + age;
+// static String myMethod(String fname, int age){
+//    return "the name of person is " + fname + " " + "and age of this person is " + age;
+// }
+
+static void fac(int n){
+   if (n > 1) {
+      return n * fac(n - 1);
+    } else {
+      return 1;
+    }
 }
 
 public static void main(String[] args){
-  System.out.println(myMethod("sam", 5));
-   System.out.println(myMethod("rakesh", 51));
+  // System.out.println(myMethod("sam", 5));
+  
+   System.out.println( fac(5));
+
 
 
 }

@@ -1,5 +1,5 @@
 class student_detail{
-    String name;
+    private String name;
     int class_no;
 
     // student_detail(){

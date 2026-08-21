@@ -3,103 +3,95 @@ import java.sql.*;
 public class StudentCRUD {
 
     // CREATE
-    public static void createStudent(String name, String email, int age) {
+    public static void createStudent(String name, String email, int age)
+            throws SQLException {
+
         String sql = "INSERT INTO students (name, email, age) VALUES (?, ?, ?)";
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(sql);
 
-            stmt.setString(1, name);
-            stmt.setString(2, email);
-            stmt.setInt(3, age);
+        stmt.setString(1, name);
+        stmt.setString(2, email);
+        stmt.setInt(3, age);
 
-            int rows = stmt.executeUpdate();
+        stmt.executeUpdate();
 
-            if (rows > 0) {
-                System.out.println("Student created successfully.");
-            }
+        System.out.println("Student created successfully.");
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        stmt.close();
+        conn.close();
     }
 
     // READ
-    public static void getStudents() {
+    public static void getStudents() throws SQLException {
+
         String sql = "SELECT * FROM students";
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(sql);
 
-            while (rs.next()) {
-                System.out.println(
-                    "ID: " + rs.getInt("id") +
-                    ", Name: " + rs.getString("name") +
-                    ", Email: " + rs.getString("email") +
-                    ", Age: " + rs.getInt("age")
-                );
-            }
+        ResultSet rs = stmt.executeQuery();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+        while (rs.next()) {
+
+            System.out.println(
+                "ID: " + rs.getInt("id") +
+                ", Name: " + rs.getString("name") +
+                ", Email: " + rs.getString("email") +
+                ", Age: " + rs.getInt("age")
+            );
         }
+
+        rs.close();
+        stmt.close();
+        conn.close();
     }
 
     // UPDATE
     public static void updateStudent(
-            int id, String name, String email, int age) {
+            int id, String name, String email, int age)
+            throws SQLException {
 
-        String sql = """
-                UPDATE students
-                SET name = ?, email = ?, age = ?
-                WHERE id = ?
-                """;
+        String sql = "UPDATE students " +
+                     "SET name = ?, email = ?, age = ? " +
+                     "WHERE id = ?";
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(sql);
 
-            stmt.setString(1, name);
-            stmt.setString(2, email);
-            stmt.setInt(3, age);
-            stmt.setInt(4, id);
+        stmt.setString(1, name);
+        stmt.setString(2, email);
+        stmt.setInt(3, age);
+        stmt.setInt(4, id);
 
-            int rows = stmt.executeUpdate();
+        stmt.executeUpdate();
 
-            if (rows > 0) {
-                System.out.println("Student updated successfully.");
-            } else {
-                System.out.println("Student not found.");
-            }
+        System.out.println("Student updated successfully.");
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        stmt.close();
+        conn.close();
     }
 
     // DELETE
-    public static void deleteStudent(int id) {
+    public static void deleteStudent(int id) throws SQLException {
+
         String sql = "DELETE FROM students WHERE id = ?";
 
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        Connection conn = DBConnection.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(sql);
 
-            stmt.setInt(1, id);
+        stmt.setInt(1, id);
 
-            int rows = stmt.executeUpdate();
+        stmt.executeUpdate();
 
-            if (rows > 0) {
-                System.out.println("Student deleted successfully.");
-            } else {
-                System.out.println("Student not found.");
-            }
+        System.out.println("Student deleted successfully.");
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        stmt.close();
+        conn.close();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
         // CREATE
         createStudent("Rahul", "rahul@gmail.com", 22);
@@ -117,14 +109,14 @@ public class StudentCRUD {
             23
         );
 
-        // READ again
+        // READ
         System.out.println("\nAfter Update:");
         getStudents();
 
         // DELETE
         deleteStudent(2);
 
-        // READ again
+        // READ
         System.out.println("\nAfter Delete:");
         getStudents();
     }

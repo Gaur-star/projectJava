@@ -2,7 +2,7 @@
 import java.util.*;
 import java.io.*;
 
-// Employee Class
+// Employee Clas
 class Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,7 +34,7 @@ class Employee implements Serializable {
     }
 }
 
-// Main Employee Management System
+// Main Employe Management System
 public class EmployeeManagementSystem {
 
     static ArrayList<Employee> employees = new ArrayList<>();

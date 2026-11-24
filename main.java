@@ -20,14 +20,14 @@ public class main{
   //   System.out.println(numbers[0]);
   // }
 
-  // public static void main(String[] args){
-  //     int s = 10;
-  //     for(int i = 0; i < s; i++){
-  //       for(int j = 0; j <= i; j++){
-  //         System.out.println("*");
-  //       }
-  //     }
-  // }
+  public static void main(String[] args){
+      int s = 10;
+      for(int i = 0; i < s; i++){
+        for(int j = 0; j <= i; j++){
+          System.out.println("*");
+        }
+      }
+  }
 
   // public static void mymethod(){
   //     int rows = 5;

@@ -2,7 +2,7 @@
 import java.util.*;
 import java.io.*;
 
-// Employee Clas
+// Employee Class
 class Employee implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,7 +34,7 @@ class Employee implements Serializable {
     }
 }
 
-// Main Employe Management System
+// Main Employee Management System
 public class EmployeeManagementSystem {
 
     static ArrayList<Employee> employees = new ArrayList<>();
@@ -43,7 +43,7 @@ public class EmployeeManagementSystem {
 
     static final String FILE_NAME = "employees.dat";
 
-    // Load employes from file
+    // Load employess from file
     static void loadEmployees() {
 
         try (ObjectInputStream in =
@@ -59,7 +59,7 @@ public class EmployeeManagementSystem {
         }
     }
 
-    // Save employes to file
+    // Save employess to file
     static void saveEmployees() {
 
         try (ObjectOutputStream out =
@@ -72,7 +72,7 @@ public class EmployeeManagementSystem {
         }
     }
 
-    // Check employe ID
+    // Check employse ID
     static Employee findEmployee(int id) {
 
         for (Employee emp : employees) {

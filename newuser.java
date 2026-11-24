@@ -43,7 +43,7 @@ public class EmployeeManagementSystem {
 
     static final String FILE_NAME = "employees.dat";
 
-    // Load employess from file
+    // Load employees from file
     static void loadEmployees() {
 
         try (ObjectInputStream in =
@@ -59,7 +59,7 @@ public class EmployeeManagementSystem {
         }
     }
 
-    // Save employess to file
+    // Save employees to file
     static void saveEmployees() {
 
         try (ObjectOutputStream out =
@@ -72,7 +72,7 @@ public class EmployeeManagementSystem {
         }
     }
 
-    // Check employse ID
+    // Check employee ID
     static Employee findEmployee(int id) {
 
         for (Employee emp : employees) {
